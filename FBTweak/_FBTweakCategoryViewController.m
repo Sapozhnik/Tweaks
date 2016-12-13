@@ -66,10 +66,16 @@
   scrollIndictatorInsets.bottom = CGRectGetHeight(_toolbar.bounds);
   _tableView.contentInset = contentInset;
   _tableView.scrollIndicatorInsets = scrollIndictatorInsets;
-  
-  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(_reset)];
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_done)];
-  
+
+  UIBarButtonItem *resetBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(_reset)];
+
+  if (self.navigationController.viewControllers.count > 1u) { // has parent view controller, back button is shown
+    self.navigationItem.rightBarButtonItem = resetBarButtonItem;
+  } else {
+    self.navigationItem.leftBarButtonItem = resetBarButtonItem;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(_done)];
+  }
+    
   if ([MFMailComposeViewController canSendMail]) {
     UIBarButtonItem *exportItem = [[UIBarButtonItem alloc] initWithTitle:@"Export" style:UIBarButtonItemStyleDone target:self action:@selector(_export)];
     UIBarButtonItem *flexibleSpaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
