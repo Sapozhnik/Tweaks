@@ -10,6 +10,7 @@
 #import "FBTweakStore.h"
 #import "FBTweakCategory.h"
 #import "_FBTweakCategoryViewController.h"
+#import "_FBTweakCollectionViewController.h"
 #import <MessageUI/MessageUI.h>
 
 @interface _FBTweakCategoryViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
@@ -177,8 +178,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  FBTweakCategory *category = _sortedCategories[indexPath.row];
-  [_delegate tweakCategoryViewController:self selectedCategory:category];
+    FBTweakCategory *category = _sortedCategories[indexPath.row];
+    _FBTweakCollectionViewController *collectionViewController = [[_FBTweakCollectionViewController alloc] initWithTweakCategory:category];
+    collectionViewController.delegate = self;
+    [self.navigationController pushViewController:collectionViewController animated:YES];
 }
 
 #if (__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE8_0) && (!defined(__has_feature) || !__has_feature(attribute_availability_app_extension))

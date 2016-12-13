@@ -40,13 +40,6 @@
 @protocol _FBTweakCategoryViewControllerDelegate <NSObject>
 
 /**
-  @abstract Called when a category is selected.
-  @param viewController The view controller with the selected category.
-  @param category The category that was selected.
- */
-- (void)tweakCategoryViewController:(_FBTweakCategoryViewController *)viewController selectedCategory:(FBTweakCategory *)category;
-
-/**
   @abstract Called when done is selected.
   @param viewController The view controller that selected done.
  */
