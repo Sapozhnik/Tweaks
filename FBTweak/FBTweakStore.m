@@ -45,8 +45,8 @@
 - (instancetype)init
 {
   if ((self = [super init])) {
-    _orderedCategories = [[NSMutableArray alloc] initWithCapacity:16];
-    _namedCategories = [[NSMutableDictionary alloc] initWithCapacity:16];
+    _orderedCategories = [[NSMutableArray alloc] init];
+    _namedCategories = [[NSMutableDictionary alloc] init];
   }
   
   return self;

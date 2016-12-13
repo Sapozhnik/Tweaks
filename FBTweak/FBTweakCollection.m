@@ -35,8 +35,8 @@
   if ((self = [super init])) {
     _name = [name copy];
     
-    _orderedTweaks = [[NSMutableArray alloc] initWithCapacity:4];
-    _identifierTweaks = [[NSMutableDictionary alloc] initWithCapacity:4];
+    _orderedTweaks = [[NSMutableArray alloc] init];
+    _identifierTweaks = [[NSMutableDictionary alloc] init];
   }
   
   return self;
